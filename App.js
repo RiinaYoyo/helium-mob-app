@@ -1,43 +1,72 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import axios from 'axios';
-
-const instance = axios.create({
-  baseURL: 'http://192.168.243.59/api.php/',
-  timeout: 1000,
-  headers: {'X-Custom-Header': 'foobar'}
-});
+import { Button ,TextInput, Text, View } from 'react-native';
+import Styles from './src/Styles'
+import instance from './src/api/apiConf'
 
 export default class App extends React.Component {
-  state={
-    currentArticle:"",
-  }
+
+
   componentDidMount(){
-    instance.get('m4y1p_content/20')
+    this.getArticle(25)
+  }
+  state={
+    dataArticle:"",
+    introtext:"",
+    idArticle:'25'
+  }
+
+  //GET ARTICLE BY ID
+  getArticle =(id , table="m4y1p_content" )=>{
+    instance.get(`${table}/${id}`)
     .then((response)=>{
+      
       this.setState({
-        currentArticle: response.data.title,
+        dataArticle: response.data,
+        introtext :response.data.introtext
       })
     })
     .catch(function (error) {
       console.log(error);
-    });
+    }).then((state)=>{
+      let cleanText = this.filterHtmlTag(this.state.introtext);
+      this.setState({
+      introtext:this.filterHtmlTag(this.state.introtext),
+    })
+    })
+    
+  }
+
+
+  //FILTER HTML TAGS IN STRINGS
+  filterHtmlTag = (str)=>{
+    if ((str===null) || (str===''))
+    {
+    return false;
+    }
+    else
+    {
+    str = str.toString();
+    str = str.replace(/<[^>]*>/g, '');
+    }
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text>{this.state.currentArticle}</Text>
+      <View style={Styles.container}>
+        <Text>{this.state.dataArticle.title}</Text>
+        <TextInput
+          style={{width:60,height: 40, borderColor: 'gray', borderWidth: 1}}
+          onChangeText={(idArticle) => this.setState({idArticle})}
+          keyboardType='numeric'
+          value={this.state.idArticle}
+        />
+        <Button
+          onPress={()=> this.getArticle(this.state.idArticle)}
+          title="search article"
+        />
+        <Text>{this.state.introtext}</Text>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+;
