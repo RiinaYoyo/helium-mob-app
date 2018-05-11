@@ -1,5 +1,14 @@
 {
   "expo": {
-    "sdkVersion": "27.0.0"
+    "name": "heliumars",
+    "version": "1.0.0",
+    "sdkVersion": "27.0.0",
+    "ios": {
+      "bundleIdentifier": "com.heliumtechnologies.heliumars"
+    },
+    "android": {
+      "package": "com.heliumtechnologies.heliumars"
+    }
   }
+  
 }

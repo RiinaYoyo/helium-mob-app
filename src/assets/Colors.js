@@ -1,4 +1,4 @@
-//Get color code
+//this object export color code of application
 const Colors = {
     blue:"#1E2C96",
     green:"#84CB00",

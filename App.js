@@ -1,24 +1,32 @@
 import React from 'react';
-import TabNavigator from "./src/navigator/TabNavigator";
-import GetApiAdress from './src/screen/GetApiAdress';
+import MainNavigator from "./src/navigator/MainNavigator";
+import Connect from './src/screen/Connect';
 import { View } from 'react-native';
 import Styles from './src/assets/Styles';
-import axios from 'axios';
-
+import DataBase from './src/DataBase'
 
 
 export default class App extends React.Component {
 
-  state={
-    requestApi:"",
+  //Create DB if doesn't exist when app start
+  componentDidMount(){
+    this.createDb()
+  }
+
+  //Simple Create Db SQL
+  createDb=()=>{
+    DataBase.transaction(tx => {
+      tx.executeSql(
+        'create table if not exists server (id integer primary key not null, server_name text not null, server_adress int not null);'
+      );
+    });
   }
 
   render() {
-    const nav = <TabNavigator/>
-    const connection = <GetApiAdress/>
+    //render main navigator
     return (
-      <View style={Styles.container}>
-        {this.props.serverAdr != undefined ? nav : connection}
+      <View style={{flex:1}}>
+        <MainNavigator/>
       </View>
     );
   }

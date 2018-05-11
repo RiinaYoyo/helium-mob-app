@@ -1,16 +1,26 @@
-import {createStackNavigator} from "react-navigation";
+import {createSwitchNavigator} from "react-navigation";
 import TabNavigator from './TabNavigator';
-import GetApiAdress from "../screen/GetApiAdress";
+import Connect from "../screen/Connect";
+import Auth from "../screen/Auth"
 
-const MainNavigator = createStackNavigator({
-    Main:{
+
+//Main navigator app switch between tab navigatorand connections screens
+const MainNavigator = createSwitchNavigator({
+    //main tab navigator with app
+    appStack:{
         screen : TabNavigator
     },
-    ConnectApi:{
-        screen: GetApiAdress
+    //Connect screen with server informations
+    Connect:{
+        screen: Connect
+    },
+    //Authentification screen for change server informations
+    Auth:{
+        screen: Auth
     }
 },{
-    initialRouteName: 'ConnectApi',
+    //the initial route of the application
+    initialRouteName: 'Connect',
 })
 
 export default MainNavigator;

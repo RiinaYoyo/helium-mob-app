@@ -1,35 +1,74 @@
 import React from 'react';
-import { Button ,TextInput, Text, View } from 'react-native';
+import {ActivityIndicator, Button ,TextInput, Text, View } from 'react-native';
 import Styles from '../assets/Styles';
 import axios from 'axios';
+
 export default class Home extends React.Component {
 
+  //Set intial State
   state={
     dataArticle:"",
     introtext:"",
-  }
-  componentDidMount(){
-    //this.getArticle(25 , this.props.apiUrl)
+    //Promise to get server adress in props from navigation
+    server : this.props.navigation.state.params.serverAdress,
   }
 
-  /*getArticle =(id , table="m4y1p_content" , apiUrl )=>{
-    axios.get(`${apiUrl}/${table}/${id}`)
-    .then(function (response) {
-      console.log(response);
+  //when reach this screen
+  componentDidMount(){
+    //get article function
+    this.getArticle(25 , this.state.server)
+  }
+
+  //Get all data of one article function with table id , serveradress, table for parameters
+  getArticle =(id , server , table="m4y1p_content")=>{
+
+    //Simple axios Request to an api
+    axios.get(`${server}/${table}/${id}`)
+    .then((response)=>{
+      //Set data to state
       this.setState({
         dataArticle: response.data,
-        introtext :response.data.introtext
       })
     })
-    .catch(function (error) {
+    .catch((error)=> {
+      //if error console log it
       console.log(error);
     });
-  }*/
+
+  }
+
+  //filter all html element in entry str
+  filterHtmlTag = (str)=>{
+    if (str===null || str==='')
+    {
+    return false;
+    }
+    else
+    {
+    //get str to string
+    str = str.toString();
+    //replace html element with regExp
+    str = str.replace(/<[^>]*>/g, '');
+    };
+    //return str
+    return str
+  }
+
   render() {
-    console.log(this.props.apiUrl)
+    //if loaded data
+    const Loaded = (
+      <View style={Styles.container}>
+        <Text>{this.state.dataArticle.title}</Text>
+        <Text>{this.state.dataArticle.introtext}</Text>
+      </View>
+    )
     return (
       <View style={Styles.container}>
-        <Text>{this.state.introtext}</Text>
+        {
+          //if data article set in state show loaded component
+          //else show react native activity indicator
+          this.state.dataArticle != ""?Loaded:<ActivityIndicator/>
+        }
       </View>
     );
   }

@@ -1,16 +1,11 @@
-import {StyleSheet, Dimensions } from 'react-native';
+import {StyleSheet} from 'react-native';
 import Colors from './Colors';
 
-let{height , width} = Dimensions.get('screen');
 
-//Some styles
+//this object export default style of all component's app
 const Styles = StyleSheet.create({
-    maxScreen:{
-      height:this.height,
-      width:this.width,       
-    },
+
     container: {
-      width:this.width, 
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
@@ -45,6 +40,28 @@ const Styles = StyleSheet.create({
     banniere:{
 
     },
+    input:{
+        borderColor: 'gray',
+        borderWidth: 1,
+        textAlign:'center'
+    },
+    row:{
+        flexDirection:'row'
+    },
+    textButton:{
+        marginVertical : 10,
+        marginHorizontal: 10,
+        width : 125,
+        height:45,
+        backgroundColor:Colors.green,
+        color:Colors.grey,
+        justifyContent:'center',
+        alignItems :'center',
+        textAlign : 'center',
+        fontSize : 18,
+        paddingTop:8,
+        borderRadius:25,
+    }
 
 })
 
