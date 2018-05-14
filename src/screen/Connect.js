@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import App from "../../App"
 import { ActivityIndicator ,Image ,TextInput, View , TouchableOpacity , Text } from 'react-native'
-import { Container, Header, Content, Form, Item, Input } from 'native-base';
 
 import Styles from '../assets/Styles'
 import Colors from '../assets/Colors'
@@ -67,19 +66,26 @@ export default class Connect extends Component {
     );
     //render screen
     return (
-      <Container>
-        <Header />
-        <Content>
-          <Form>
-            <Item>
-              <Input placeholder="Username" />
-            </Item>
-            <Item last>
-              <Input placeholder="Password" />
-            </Item>
-          </Form>
-        </Content>
-      </Container>
+      <View style={Styles.container}>
+        {
+          //if servername set in state show current server information
+          //else show react activity indicator
+          this.state.serverName != ""?Loaded:<ActivityIndicator/>
+        }
+        <View style={Styles.row}>
+        <TouchableOpacity 
+          onPress={this.reachAuth}
+        >
+        <Text style={Styles.textButton}> Change Server </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={this.reachHome}
+          
+        >
+        <Text style={Styles.textButton}> Connect </Text>
+        </TouchableOpacity>
+        </View>
+        </View>
     )
   }
 }
