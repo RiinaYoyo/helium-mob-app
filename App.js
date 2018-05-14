@@ -1,7 +1,7 @@
 import React from 'react';
 import MainNavigator from "./src/navigator/MainNavigator";
 import Connect from './src/screen/Connect';
-import { View } from 'react-native';
+import {StatusBar , View } from 'react-native';
 import Styles from './src/assets/Styles';
 import DataBase from './src/DataBase'
 
@@ -26,6 +26,9 @@ export default class App extends React.Component {
     //render main navigator
     return (
       <View style={{flex:1}}>
+        <StatusBar
+          hidden={true}
+        />
         <MainNavigator/>
       </View>
     );

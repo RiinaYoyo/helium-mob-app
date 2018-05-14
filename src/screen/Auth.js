@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Image ,TextInput, View , TouchableHighlight , Text} from 'react-native';
+import { Image ,TextInput, View , TouchableOpacity , Text} from 'react-native';
 import Styles from '../assets/Styles';
-import DataBase from '../DataBase'
+import DataBase from '../DataBase';
+import ServerForm from '../component/ServerForm';
 
 
 export default class Auth extends Component {
@@ -25,7 +26,7 @@ export default class Auth extends Component {
   changeServer=(name , adress)=>{
     //if name and adress set
     if(name != "" && adress != ""){
-      //Simple SQL delete action
+      //Sim192.168.250.212/WSTEST/ple SQL delete action
       DataBase.transaction(tx => {
         tx.executeSql(`DELETE FROM server WHERE id = 1 ;`);
       })
@@ -43,25 +44,18 @@ export default class Auth extends Component {
     //Render server change form
     return (
       <View style={Styles.container}>
-        <View>
-          <Text>Nom du Serveur : </Text>
-          <TextInput
-            style={Styles.input}
-            onChangeText={(serverName) => this.setState({serverName})}
-            value={this.state.serverName}
-          />
-          <Text> Adresse du serveur : </Text>
-          <TextInput
-            style={Styles.input}
-            onChangeText={(serverAdress) => this.setState({serverAdress})}
-            value={this.state.serverAdress}
-          />
-          <TouchableHighlight 
-            onPress={this.reachConnect}
-          >
-          <Text style={Styles.textButton}> Confirm </Text>
-          </TouchableHighlight>
-        </View>
+        <ServerForm
+          changeValue={true}
+          inputValue1={this.state.serverName}
+          onChangeText1={(serverName) => this.setState({serverName})}
+          inputValue2={this.state.serverAdress}
+          onChangeText2={(serverAdress) => this.setState({serverAdress})}
+        />
+        <TouchableOpacity 
+          onPress={this.reachConnect}
+        >
+        <Text style={Styles.textButton}> Confirm </Text>
+        </TouchableOpacity>
       </View>
     )
   }

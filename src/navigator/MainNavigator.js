@@ -1,3 +1,6 @@
+//Main Switch navigator for server administration
+
+
 import {createSwitchNavigator} from "react-navigation";
 import TabNavigator from './TabNavigator';
 import Connect from "../screen/Connect";

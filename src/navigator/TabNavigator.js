@@ -1,30 +1,32 @@
+//Main Tab Navigator
+
 import {createBottomTabNavigator} from "react-navigation";
 import React, { Component } from 'react'
-import Home from '../screen/Home'
-import ArticleList from '../screen/ArticleList';
-import ContactList from '../screen/ContactList';
-import Calendar from '../screen/Calendar';
 
-    //Navigate between app's different screen
+import Recent from '../screen/Recent'
+import Favorite from '../screen/Favorite';
+import Setting from '../screen/Setting';
+
+    //Navigate between app's different screen tab
     const TabNavigator = createBottomTabNavigator({
         
         //Home screen with recent categories
         Recent:{
-            screen:Home,
+            screen:Recent,
             navigationOptions:{
                 title:'Recent',
             }
         },
         //favorite screen with liked user's article
         Favorite:{
-            screen:ArticleList,
+            screen:Favorite,
             navigationOptions:{
                 title:'Favorite',
             }
         },
         //setting screen
         Setting:{
-            screen:ContactList,
+            screen:Setting,
             navigationOptions:{
                 title:'Setting',
             }

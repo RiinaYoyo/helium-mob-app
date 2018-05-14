@@ -20,26 +20,6 @@ const Styles = StyleSheet.create({
     greyBack:{
         backgroundColor:Colors.grey,
     },
-    article:{
-        fontSize: 22,
-    },
-    Menu:{
-
-    },
-    smLogo:{
-        height:72,
-        width:72,
-    },
-    xlLogo:{
-        height:172,
-        width:172,
-    },
-    content:{
-
-    },
-    banniere:{
-
-    },
     input:{
         borderColor: 'gray',
         borderWidth: 1,
@@ -61,7 +41,47 @@ const Styles = StyleSheet.create({
         fontSize : 18,
         paddingTop:8,
         borderRadius:25,
-    }
+    },
+    card:{
+        flex:1,
+        marginVertical:25,
+        marginHorizontal:30,
+        justifyContent:'center'
+    },
+    cardHeader:{
+
+    },
+    cardBody:{
+
+    },
+    cardFooter:{
+
+    },
+    cardTitle:{
+        textAlign:'center',
+        fontSize:24,
+        fontWeight:'bold',
+        color:Colors.green
+    },
+    cardCreated:{
+        color:Colors.blue,
+        fontSize:14,
+    },
+    cardInput:{
+        marginTop:20,
+        textAlign:'center',
+        paddingBottom:10,
+        backgroundColor:Colors.white
+    },
+    cardText:{
+        textAlign:'justify',
+        fontSize:18,
+    },
+    cardImage:{
+        width: 400,
+        height: 180,
+        marginVertical:10
+    },
 
 })
 
