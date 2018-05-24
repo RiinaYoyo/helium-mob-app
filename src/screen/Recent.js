@@ -98,10 +98,9 @@ export default class Recent extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     //if loaded data
     const Loaded = (
-      <View style={Styles.container}>
+      <View>
         <ArticleCard
           title={this.state.articleTitle}
           text={this.state.introText}

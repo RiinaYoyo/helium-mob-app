@@ -5,10 +5,11 @@
     "sdkVersion": "27.0.0",
     "icon":"./src/assets/img/logo.png",
     "ios": {
-      "bundleIdentifier": "com.heliumtechnologies.heliumars"
+      "bundleIdentifier": "com.ars.helium"
     },
     "android": {
-      "package": "com.heliumtechnologies.heliumars"
+      "package": "com.ars.helium",
+      "googleServicesFile": "./google-services.json"
     }
   }
   

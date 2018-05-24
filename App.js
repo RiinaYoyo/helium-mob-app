@@ -3,14 +3,17 @@ import MainNavigator from "./src/navigator/MainNavigator";
 import Connect from './src/screen/Connect';
 import {StatusBar , View } from 'react-native';
 import Styles from './src/assets/Styles';
-import DataBase from './src/DataBase'
+import DataBase from './src/DataBase';
+import FireConf from './src/FireConf';
+import firebase from 'firebase';
 
 
 export default class App extends React.Component {
 
   //Create DB if doesn't exist when app start
   componentDidMount(){
-    this.createDb()
+    this.createDb();
+    firebase.initializeApp(FireConf)
   }
 
   //Simple Create Db SQL

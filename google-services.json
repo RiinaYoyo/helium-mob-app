@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "379312113220",
+    "firebase_url": "https://helium-ars.firebaseio.com",
+    "project_id": "helium-ars",
+    "storage_bucket": "helium-ars.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:379312113220:android:d72223e3e936e812",
+        "android_client_info": {
+          "package_name": "com.ars.helium"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "379312113220-9r65h9e1ns6psr1672kjrpquc59v9294.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "379312113220-9r65h9e1ns6psr1672kjrpquc59v9294.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8PbSUdr4fX7yTyRkn06uvL4eglSpCua4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

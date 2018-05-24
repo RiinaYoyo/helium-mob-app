@@ -34,11 +34,11 @@ export default class Connect extends Component {
   }
 
   //Get value of recieve object and set it to state
-  getServerIp=(ip)=>{
-    ip = Object.values(ip)
+  getServerIp=(obj)=>{
+    obj = Object.values(obj)
     this.setState({
-        serverName:ip[1],
-        serverAdress : ip[2]      
+        serverName:obj[1],
+        serverAdress : obj[2]      
     })
   }
   //Connect button action
